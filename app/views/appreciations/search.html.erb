@@ -1,0 +1,66 @@
+
+
+<%= render 'searchForm' %>
+<% if @cat_name %>
+
+<h2><%= @cat_name %></h2> 
+
+<% if @appreciations_OR %>
+<h2><%= @mot1%> OU  <%= @mot2%></h2> 
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Remark</th>
+      <th>Category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+
+
+  <tbody>
+    <% @appreciations_OR.each do |appreciation| %>
+      <tr>
+        <td><%= appreciation.content %></td>
+        <td><%= appreciation.remark %></td>
+        <td><%= appreciation.category.title %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>
+
+<% if @appreciations_AND %>
+<h2><%= @mot1%> ET <%= @mot2%></h2> 
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Remark</th>
+      <th>Category</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+
+
+  <tbody>
+    <% @appreciations_AND.each do |appreciation| %>
+      <tr>
+        <td><%= appreciation.content %></td>
+        <td><%= appreciation.remark %></td>
+        <td><%= appreciation.category.title %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% end %>
+
+<% end %>

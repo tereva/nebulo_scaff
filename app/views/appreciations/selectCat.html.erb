@@ -1,0 +1,14 @@
+
+
+
+
+<%= form_tag selectCat_path, class: "nifty_form" do %>
+
+
+<%= label_tag(:cat, "Selectionnez une categorie ou laisser vide:" )%>
+<%= select_tag(:cat, options_from_collection_for_select(Category.all, :id, :title), :include_blank => true)%> <br>
+
+<%= submit_tag "Lancer la recherche" %>
+
+
+<% end %>

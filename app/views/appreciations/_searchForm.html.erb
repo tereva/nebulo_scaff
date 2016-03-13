@@ -1,0 +1,19 @@
+
+
+
+
+<%= form_tag search_path, class: "nifty_form" do %>
+
+
+<%= label_tag(:kw1, "Selectionnez un premier mot")%>
+<%= select_tag(:kw1, options_from_collection_for_select(@keyword_list, :id, :word), :include_blank => true)%> <br>
+
+<%= label_tag(:kw2, "Selectionnez un deuxième mot")%>
+<%= select_tag(:kw2, options_from_collection_for_select(@keyword_list, :id, :word), :include_blank => true)%> <br>
+
+<%= hidden_field_tag(:cat, @cat) %>
+
+<%= submit_tag "Lancer la recherche" %>
+
+
+<% end %>

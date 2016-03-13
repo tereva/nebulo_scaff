@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @appreciation.content %>
+</p>
+
+<p>
+  <strong>Remark:</strong>
+  <%= @appreciation.remark %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @appreciation.category %>
+</p>
+
+<%= link_to 'Edit', edit_appreciation_path(@appreciation) %> |
+<%= link_to 'Back', appreciations_path %>
