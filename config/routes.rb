@@ -3,14 +3,11 @@ Rails.application.routes.draw do
   root to: 'appreciations#index'
 
   resources :keywords
-  resources :appreciations
+ # resources :appreciations
 
-  # resources :appreciations do
-  #   member do 
-  #    post :search
-  #    post :selectCat
-  #   end
-  # end
+   resources :appreciations do
+      collection {post :import}
+   end
 
   resources :categories
 
@@ -18,6 +15,9 @@ Rails.application.routes.draw do
   post '/search' => 'appreciations#search'  
   get '/selectCat' => 'appreciations#selectCat'
   post '/selectCat' => 'appreciations#selectCat'
+  get '/import' => 'appreciations#import'
+  # post '/import' => 'appreciations#import'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -107,6 +107,14 @@ class AppreciationsController < ApplicationController
     end
  end
 
+
+  def import
+    if params[:file].present? && params[:category_id].present?
+      Appreciation.import(params[:file], params[:category_id])
+      redirect_to appreciations_url, notice: "Appreciations imported"
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_appreciation
