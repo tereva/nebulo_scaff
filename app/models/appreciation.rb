@@ -28,7 +28,7 @@ class Appreciation < ActiveRecord::Base
 		split_content = self.content.gsub(/[a-zA-Z]'/,'').gsub(/[[:punct:]]/,'').squish.split(" ")
 		split_content.each do |element|		
 		# Pour chaque "element" > 5 char dans "content" faire :
-			if element.length >= 4
+			if element.length >= 5
 				element_bis = ActiveSupport::Inflector.transliterate(element).downcase
 				#enlever la ponctuation
 			#mot=Keyword.find_by_word(element) ? self.keywords << mot : self.keywords.create({word: element})
@@ -40,6 +40,14 @@ class Appreciation < ActiveRecord::Base
 				self.save!
 			end
 		end
+	end
+
+	def delete_keywords
+		keywords = self.keywords
+		keywords.each do |kw|
+			self.keywords.delete(kw)
+		end
+
 	end
 
 end

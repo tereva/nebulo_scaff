@@ -44,6 +44,9 @@ class AppreciationsController < ApplicationController
   def update
     respond_to do |format|
       if @appreciation.update(appreciation_params)
+        # effacer les KW precedent, generer une nouveau parsing
+        @appreciation.delete_keywords
+        @appreciation.parse
         format.html { redirect_to @appreciation, notice: 'Appreciation was successfully updated.' }
         format.json { render :show, status: :ok, location: @appreciation }
       else
