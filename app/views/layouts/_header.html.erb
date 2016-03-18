@@ -15,9 +15,12 @@
 
  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
+        <% if admin? %>
+
+
 
     <li class="dropdown">
-      <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Voir tous<b class="caret"></b></a>
+      <a href="#"  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Voir<b class="caret"></b></a>
       <ul class="dropdown-menu">
        <li><%= link_to "Appreciations", appreciations_path%></li>
        <li><%= link_to "Catégorie",  categories_path%> </li>
@@ -34,8 +37,9 @@
      </li>
 
 
-        <li><%= link_to "Chercher", '/selectCat' %></li>
-
+        <li><%= link_to "Chercher", '/selectCat' %></li>  
+        <li><%= link_to "Deconnecter", '/logout' %></li>
+        <% end %>
       </ul>
   </div><!-- /.container-fluid -->
 </div>
