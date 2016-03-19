@@ -1,19 +1,36 @@
 
 
+<div class="row">
+	<div class="col-md-6 col-md-offset-3"> 
 
+		<div class="panel panel-primary panelrow">
+			<div class="panel-heading">
+				Choisissez deux mots 
+			</div>
 
-<%= form_tag search_path, class: "nifty_form" do %>
+			<div class="panel-body">
 
+				<%= form_tag search_path, class: "nifty_form" do %>
+				<div class="form-group">
 
-<%= label_tag(:kw1, "Selectionnez un premier mot")%>
-<%= select_tag(:kw1, options_from_collection_for_select(@keyword_list, :id, :word), :include_blank => true)%> <br>
+					<%= label_tag(:kw1, "Selectionnez un premier mot")%>
+					<%= select_tag(:kw1, options_from_collection_for_select(@keyword_list, :id, :word), :include_blank => true)%>
+				</div>
 
-<%= label_tag(:kw2, "Selectionnez un deuxième mot")%>
-<%= select_tag(:kw2, options_from_collection_for_select(@keyword_list, :id, :word), :include_blank => true)%> <br>
+				<div class="form-group">
+					<%= label_tag(:kw2, "Selectionnez un deuxième mot")%>
+					<%= select_tag(:kw2, options_from_collection_for_select(@keyword_list, :id, :word), :include_blank => true)%>
 
-<%= hidden_field_tag(:cat, @cat) %>
+				</div>
 
-<%= submit_tag "Lancer la recherche" %>
+				<%= hidden_field_tag(:cat, @cat) %>
 
+				<%= submit_tag "Lancer la recherche", class: "btn btn-large btn-primary"  %>
 
-<% end %>
+				<% end %>
+			</div>
+
+		</div>
+	</div> <!-- col md6 -->
+</div> <!-- row -->
+

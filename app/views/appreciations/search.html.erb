@@ -1,66 +1,98 @@
 
 
-<%= render 'searchForm' %>
-<% if @cat_name %>
 
-<h2><%= @cat_name %></h2> 
+<% if @cat_name %>
+<h1>Catégorie : <%= @cat_name %> </h1>
+
+<%= render 'searchForm' %>
+
+
+<h2>Résultats</h2> 
 
 <% if @appreciations_OR %>
-<h2><%= @mot1%> OU  <%= @mot2%></h2> 
+<h3><%= @mot1%> OU <%= @mot2%></h3> 
 
 
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th>Remark</th>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-
-
-  <tbody>
+<div class="row">
+ <div class="panel panel-primary">
+  <div class="panel-heading">
+  <div class="row">
+    <div class="col-md-6">
+        Contenu
+      </div>
+      <div class="col-md-2 text-right">
+       Remarque 
+     </div>
+     <div class="col-md-1 text-right">
+       Catégorie
+     </div>
+       <div class="col-md-3">
+     </div>
+  </div>   
+ </div>  
+   <table class="table"> 
     <% @appreciations_OR.each do |appreciation| %>
       <tr>
         <td><%= appreciation.content %></td>
         <td><%= appreciation.remark %></td>
         <td><%= appreciation.category.title %></td>
+        <td><%= link_to 'Show', appreciation, class: "btn btn-xs btn-success"  %></td>
+        <td><%= link_to 'Edit', edit_appreciation_path(appreciation), class: "btn btn-xs btn-success" %></td>
+        <td><%= link_to 'Destroy', appreciation, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+  </table> <!--  panel-body -->
+</div> <!-- panel  -->
+</div><!-- fin row 1 -->
+
 
 <% end %>
 
 <% if @appreciations_AND %>
-<h2><%= @mot1%> ET <%= @mot2%></h2> 
+<h3><%= @mot1%> ET <%= @mot2%></h3> 
 
 
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th>Remark</th>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-
-
-  <tbody>
+<div class="row">
+ <div class="panel panel-primary">
+  <div class="panel-heading">
+  <div class="row">
+    <div class="col-md-6">
+        Contenu
+      </div>
+      <div class="col-md-2 text-right">
+       Remarque 
+     </div>
+     <div class="col-md-1 text-right">
+       Catégorie
+     </div>
+       <div class="col-md-3">
+     </div>
+  </div>   
+ </div>  
+   <table class="table"> 
     <% @appreciations_AND.each do |appreciation| %>
       <tr>
         <td><%= appreciation.content %></td>
         <td><%= appreciation.remark %></td>
         <td><%= appreciation.category.title %></td>
+        <td><%= link_to 'Show', appreciation, class: "btn btn-xs btn-success"  %></td>
+        <td><%= link_to 'Edit', edit_appreciation_path(appreciation), class: "btn btn-xs btn-success" %></td>
+        <td><%= link_to 'Destroy', appreciation, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %></td>
       </tr>
     <% end %>
-  </tbody>
-</table>
+  </table> <!--  panel-body -->
+</div> <!-- panel  -->
+</div><!-- fin row 1 -->
+
+
 
 <% end %>
+
+
+<% else %>
+
+<h1>Toutes les Catégories</h1>
+
+<%= render 'searchForm' %>
 
 <% end %>

@@ -31,7 +31,7 @@ class Appreciation < ActiveRecord::Base
 		# Pour chaque "element" > 5 char dans "content" faire :
 			if element.length >= 5
 				element_bis = ActiveSupport::Inflector.transliterate(element).downcase
-				put element_bis
+				puts element_bis
 				#enlever la ponctuation
 			#mot=Keyword.find_by_word(element) ? self.keywords << mot : self.keywords.create({word: element})
 				if mot=Keyword.find_by_word(element_bis)

@@ -1,14 +1,28 @@
 
+<h1>Faire une recherche</h1>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3"> 
 
+		<div class="panel panel-primary panelrow">
+			<div class="panel-heading">
+				Choisissez une catégorie
+			</div>
 
+			<div class="panel-body">
 
-<%= form_tag selectCat_path, class: "nifty_form" do %>
+				<%= form_tag selectCat_path, class: "nifty_form" do %>
+				<div class="form-group">
+					<%= label_tag(:cat, "Selectionnez une categorie ou laisser vide:" )%>
+					<%= select_tag(:cat, options_from_collection_for_select(Category.all, :id, :title), :include_blank => true)%> 
 
+				</div>
 
-<%= label_tag(:cat, "Selectionnez une categorie ou laisser vide:" )%>
-<%= select_tag(:cat, options_from_collection_for_select(Category.all, :id, :title), :include_blank => true)%> <br>
+				
+				<%= submit_tag "Lancer la recherche", class: "btn btn-large btn-primary"  %>
 
-<%= submit_tag "Lancer la recherche" %>
+				<% end %>
+			</div>
 
-
-<% end %>
+		</div>
+	</div> <!-- col md6 -->
+</div> <!-- row -->
