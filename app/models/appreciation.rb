@@ -26,10 +26,12 @@ class Appreciation < ActiveRecord::Base
 
 	def parse
 		split_content = self.content.gsub(/[a-zA-Z]'/,'').gsub(/[[:punct:]]/,'').squish.split(" ")
+		puts "PARSING"
 		split_content.each do |element|		
 		# Pour chaque "element" > 5 char dans "content" faire :
 			if element.length >= 5
 				element_bis = ActiveSupport::Inflector.transliterate(element).downcase
+				put element_bis
 				#enlever la ponctuation
 			#mot=Keyword.find_by_word(element) ? self.keywords << mot : self.keywords.create({word: element})
 				if mot=Keyword.find_by_word(element_bis)

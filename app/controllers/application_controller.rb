@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
 	def authorize
 	  unless admin?
-	    flash[:error] = "unauthorized access"
+	    flash[:danger] = "unauthorized access"
 	    redirect_to login_path
 	    false
 	  end
