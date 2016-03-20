@@ -72,10 +72,10 @@ class AppreciationsController < ApplicationController
     if params[:cat]
       if params[:cat]=="" # ttes les cat
         @cat = 'all'
-        @keyword_list = Keyword.all 
+        @keyword_list = Keyword.order(:word) 
       else
         @categorie = Category.find(params[:cat])
-        @keyword_list = Keyword.where(:id => @categorie.list_keyword_ids)
+        @keyword_list = Keyword.where(:id => @categorie.list_keyword_ids).order(:word)
         @cat = params[:cat]
       end
       render 'search'
@@ -91,7 +91,7 @@ class AppreciationsController < ApplicationController
       @mot2 = Keyword.find(params[:kw2]).word
       if params[:cat] =='all'
           @cat= 'all'
-          @keyword_list = Keyword.all
+          @keyword_list = Keyword.order(:word) 
           @cat_name = 'Toutes les catégories'
           @appreciations_OR = Appreciation.where(:id =>  kw1_id + kw2_id)
           @appreciations_AND = Appreciation.where(:id =>  kw1_id & kw2_id)
@@ -99,7 +99,7 @@ class AppreciationsController < ApplicationController
           @categorie = Category.find(params[:cat])
           @cat = @categorie.id
           @cat_name = @categorie.title
-          @keyword_list = Keyword.where(:id => @categorie.list_keyword_ids)
+          @keyword_list = Keyword.where(:id => @categorie.list_keyword_ids).order(:word)
           @appreciations_OR = Appreciation.where(category: params[:cat], :id =>  kw1_id + kw2_id)
           @appreciations_AND = Appreciation.where(category: params[:cat], :id =>  kw1_id & kw2_id)
       
