@@ -13,11 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20160308014344) do
 
-  create_table "Appreciations_Keywords", id: false, force: :cascade do |t|
-    t.integer "appreciation_id", null: false
-    t.integer "keyword_id",      null: false
-  end
-
   create_table "appreciations", force: :cascade do |t|
     t.text     "content"
     t.string   "remark"
@@ -28,18 +23,15 @@ ActiveRecord::Schema.define(version: 20160308014344) do
 
   add_index "appreciations", ["category_id"], name: "index_appreciations_on_category_id"
 
+  create_table "appreciations_keywords", id: false, force: :cascade do |t|
+    t.integer "appreciation_id", null: false
+    t.integer "keyword_id",      null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "indexations", force: :cascade do |t|
-    t.integer  "keyword_id"
-    t.integer  "appreciation_id"
-    t.integer  "hit"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
   end
 
   create_table "keywords", force: :cascade do |t|
